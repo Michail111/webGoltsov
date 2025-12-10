@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "msedge",
+            "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
             "file": "c:\\Users\\michaillll\\Desktop\\Учеба ПИз-221\\HTML\\webRepository\\HTML_LAB1\\hm1\\index.html"
