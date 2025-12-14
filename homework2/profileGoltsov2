@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Профиль студента — Гольцов Михаил</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4}
+    body{max-width:800px;margin:40px auto;padding:20px}
+    .level{margin-top:18px}
+    a.university{color:#0b5fff;text-decoration:none;font-weight:600}
+    .socials{margin-top:18px}
+    ul.social-list{list-style:none;padding:0}
+    ul.social-list li{margin:8px 0;padding:8px 10px;border-radius:8px;background:#f1f5f9;display:flex;align-items:center}
+    .emoji{font-size:1.25rem;margin-right:10px}
+    .network{font-weight:600}
+    .hint{color:#64748b;font-size:.95rem;margin-top:14px}
+    @media (max-width:480px){body{margin:18px;padding:14px}}
+  </style>
+</head>
+<body>
+  <h1>Гольцов Михаил Владимирович — 4 курс, направление: Прикладная информатика заочно</h1>
+  <p>Факультет: факультет математики и информационных технологий</p>
+
+  <section class="level">
+    <h2>Уровень подготовки в университете</h2>
+    <p>Я бакалавр <a class="university" href="https://www.kemsu.ru" target="_blank" rel="noopener noreferrer">Кемеровского Государственного Университета</a>. Приблизительный год окончания: <strong>2027</strong>.</p>
+  </section>
+
+  <section class="socials">
+    <h2>Мои социальные сети</h2>
+    <ul class="social-list">
+      <li><span class="emoji">🦲</span><span class="network">ВКонтакте:</span>&nbsp;<a href="https://vk.com/dontreadmyid" target="_blank" rel="noopener noreferrer">VK</a></li>
+      <li><span class="emoji">❤️</span><span class="network">Telegram:</span>&nbsp;<a href="https://t.me/dontreadmyid" target="_blank" rel="noopener noreferrer">@dontreadmyid</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>
