@@ -7,8 +7,8 @@
         {
             "type": "msedge",
             "request": "launch",
-            "name": "Open Pesticide.html",
-            "file": "c:\\Users\\michaillll\\Desktop\\Учеба ПИз-221\\HTML\\webRepository\\HTML_LAB1\\hm1\\homework3\\Pesticide.html"
+            "name": "Open site.html",
+            "file": "c:\\Users\\michaillll\\Desktop\\Учеба ПИз-221\\HTML\\webRepository\\HTML_LAB1\\hm1\\homework4\\site.html"
         }
     ]
 }
