@@ -1,4 +1,4 @@
-console.log("Привет, это моя первая программа на JavaScript!");
+console.log("Программа на JavaScript!");
 let num1 = 10;
 let num2 = 5;
 console.log("Первое число:", num1);
@@ -20,7 +20,7 @@ console.log("Возведение в квадрат num1:", num1 ** 2);
 console.log("Возведение в квадрат num2:", Math.pow(num2, 2));
 
 
-let firstName = "Иван";
+let firstName = "Михаил";
 let greeting = "Привет, " + firstName + "!";
 console.log(greeting);
 
