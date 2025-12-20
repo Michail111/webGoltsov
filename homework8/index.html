@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Набор утилит: Калькуляторы и помощники</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .app-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .app-title {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .app-title i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .app-description {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+        
+        .result h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .result-content {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .bmi-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .underweight {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+        
+        .normal {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .overweight {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .obese {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .year-result {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .leap {
+            color: #27ae60;
+        }
+        
+        .not-leap {
+            color: #e74c3c;
+        }
+        
+        .payer-result {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> Набор утилит</h1>
+            <p class="subtitle">Калькуляторы и помощники для повседневных задач</p>
+        </header>
+        
+        <div class="apps-grid">
+            <div class="app-card">
+                <h2 class="app-title"> Калькулятор любви</h2>
+                <p class="app-description">Определите совместимость двух людей по их именам. Программа случайным образом генерирует процент совместимости от 0 до 100.</p>
+                <button class="btn" onclick="runLoveCalculator()">Запустить калькулятор</button>
+                <div id="love-result" class="result">
+                    <h3>Результат:</h3>
+                    <p class="result-content" id="love-result-content"></p>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <h2 class="app-title">ИМТ Калькулятор</h2>
+                <p class="app-description">Рассчитайте индекс массы тела (ИМТ) по формуле: вес / (рост в квадрате). Получите оценку состояния вашего веса.</p>
+                <button class="btn" onclick="runBMICalculator()">Рассчитать ИМТ</button>
+                <div id="bmi-result" class="result">
+                    <h3>Результат:</h3>
+                    <p class="result-content" id="bmi-result-content"></p>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <h2 class="app-title">Високосный год</h2>
+                <p class="app-description">Определите, является ли введённый год високосным. Год високосный, если он делится на 4, но не на 100, или делится на 400.</p>
+                <button class="btn" onclick="runLeapYearChecker()">Проверить год</button>
+                <div id="year-result" class="result">
+                    <h3>Результат:</h3>
+                    <p class="result-content" id="year-result-content"></p>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <h2 class="app-title">Кто оплачивает ужин?</h2>
+                <p class="app-description">Случайным образом выберите человека из списка, который будет оплачивать ужин. Справедливый и беспристрастный выбор!</p>
+                <button class="btn" onclick="runDinnerPayer()">Выбрать плательщика</button>
+                <div id="payer-result" class="result">
+                    <h3>Результат:</h3>
+                    <p class="result-content" id="payer-result-content"></p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Все калькуляторы используют стандартные алгоритмы и формулы. Результаты носят ознакомительный характер.</p>
+            <p>Создано для учебных целей | Все задачи реализованы на чистом JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        function showResult(elementId, content) {
+            const resultElement = document.getElementById(elementId);
+            resultElement.style.display = 'block';
+            document.getElementById(content).innerHTML = content;
+        }
+        
+        function runLoveCalculator() {
+            const firstName = prompt("Введите первое имя:");
+            if (firstName === null) return;
+            
+            const secondName = prompt("Введите второе имя:");
+            if (secondName === null) return;
+            
+            const result = Math.floor(Math.random() * 101);
+            
+            let resultHTML = `<span class="highlight">${firstName}</span> подходит к <span class="highlight">${secondName}</span> на <span class="highlight">${result}%</span>!`;
+            
+            if (result >= 80) {
+                resultHTML += "<br><strong>Отличная совместимость! </strong>";
+            } else if (result >= 50) {
+                resultHTML += "<br><strong>Неплохая совместимость! </strong>";
+            } else if (result >= 30) {
+                resultHTML += "<br><strong>Есть над чем поработать! </strong>";
+            } else {
+                resultHTML += "<br><strong>Может, попробовать с кем-то другим? </strong>";
+            }
+            
+            document.getElementById('love-result-content').innerHTML = resultHTML;
+            document.getElementById('love-result').style.display = 'block';
+        }
+        
+        function runBMICalculator() {
+            const heightInput = prompt("Введите ваш рост в метрах (например, 1.75):");
+            if (heightInput === null) return;
+            
+            const weightInput = prompt("Введите ваш вес в килограммах:");
+            if (weightInput === null) return;
+            
+            const height = parseFloat(heightInput.replace(',', '.'));
+            const weight = parseFloat(weightInput.replace(',', '.'));
+            
+            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                alert("Пожалуйста, введите корректные положительные числа!");
+                return;
+            }
+            
+            const bmi = weight / (height * height);
+            const roundedBmi = bmi.toFixed(2);
+            
+            let category, categoryClass, message;
+            
+            if (bmi <= 18.5) {
+                category = "Недостаточный вес";
+                categoryClass = "underweight";
+                message = "Рекомендуется увеличить калорийность питания.";
+            } else if (bmi <= 25) {
+                category = "Нормально";
+                categoryClass = "normal";
+                message = "Ваш вес находится в здоровом диапазоне. Продолжайте в том же духе!";
+            } else if (bmi <= 30) {
+                category = "Излишек веса";
+                categoryClass = "overweight";
+                message = "Рекомендуется умеренная физическая активность и контроль питания.";
+            } else {
+                category = "Ожирение";
+                categoryClass = "obese";
+                message = "Рекомендуется консультация с врачом для разработки плана снижения веса.";
+            }
+            
+            const resultHTML = `
+                Ваш ИМТ: <span class="highlight">${roundedBmi}</span><br>
+                Категория: <span class="bmi-category ${categoryClass}">${category}</span><br>
+                <em>${message}</em>
+            `;
+            
+            document.getElementById('bmi-result-content').innerHTML = resultHTML;
+            document.getElementById('bmi-result').style.display = 'block';
+        }
+        
+        function runLeapYearChecker() {
+            const yearInput = prompt("Введите год для проверки:");
+            if (yearInput === null) return;
+            
+            const year = parseInt(yearInput);
+            
+            if (isNaN(year) || year < 0) {
+                alert("Пожалуйста, введите корректный год!");
+                return;
+            }
+            
+            const isLeap = (year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0);
+            
+            let resultHTML;
+            if (isLeap) {
+                resultHTML = `<div class="year-result leap">Год ${year} является ВИСОКОСНЫМ</div>
+                             <p>В этом году в феврале 29 дней, а всего 366 дней в году.</p>`;
+            } else {
+                resultHTML = `<div class="year-result not-leap">Год ${year} НЕ является високосным</div>
+                             <p>В этом году в феврале 28 дней, а всего 365 дней в году.</p>`;
+            }
+            
+            document.getElementById('year-result-content').innerHTML = resultHTML;
+            document.getElementById('year-result').style.display = 'block';
+        }
+        
+        function runDinnerPayer() {
+            const defaultNames = [''];
+            
+            const namesInput = prompt("Введите имена через запятую (или оставьте пустым для списка по умолчанию):", defaultNames.join(', '));
+            
+            let names;
+            if (namesInput === null) return;
+            
+            if (namesInput.trim() === "") {
+                names = defaultNames;
+            } else {
+                names = namesInput.split(',').map(name => name.trim()).filter(name => name !== "");
+                
+                if (names.length === 0) {
+                    alert("Вы не ввели ни одного имени! Будет использован список по умолчанию.");
+                    names = defaultNames;
+                }
+            }
+            
+            const randomIndex = Math.floor(Math.random() * names.length);
+            const payer = names[randomIndex];
+            
+            const resultHTML = `
+                <div class="payer-result">Оплачивать будет ${payer}!</div>
+                <p style="margin-top: 15px; text-align: center;">
+                    Список участников: <strong>${names.join(', ')}</strong><br>
+                    Всего участников: ${names.length}
+                </p>
+            `;
+            
+            document.getElementById('payer-result-content').innerHTML = resultHTML;
+            document.getElementById('payer-result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
