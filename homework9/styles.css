@@ -1,0 +1,104 @@
+/* styles.css */
+body {
+  text-align: center;
+  background-color: #283149;
+  font-family: 'Arvo', cursive;
+  color: white;
+}
+
+h1 {
+  font-size: 5rem;
+  color: #DBEDF3;
+  text-shadow: 3px 0 #DA0463;
+  margin: 30px;
+}
+
+footer {
+  color: #DBEDF3;
+  font-family: sans-serif;
+  margin-top: 40px;
+}
+
+.set {
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 800px;
+}
+
+.drum {
+  outline: none;
+  border: 10px solid #404B69;
+  font-size: 2.5rem;
+  font-family: 'Arvo', cursive;
+  font-weight: 900;
+  color: #DA0463;
+  text-shadow: 3px 0 #DBEDF3;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.drum img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.pressed {
+  box-shadow: 0 3px 4px 0 #DBEDF3;
+  opacity: 0.5;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.instrument {
+  width: 110px;
+  text-align: center;
+}
+
+.instrument img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #404B69;
+}
+
+.instrument p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #DBEDF3;
+}
+
+.w, .a, .s, .d, .j, .k, .l {
+  /* Классы для отдельных кнопок могут быть использованы для специфичного стиля */
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  color: red;
+}
